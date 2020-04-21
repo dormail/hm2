@@ -16,6 +16,9 @@
 \setlength{\headheight}{4cm} 
 
 
+% eigene commands
+\newcommand{\limxzer}{\lim_{x \rightarrow 0}}
+
 \begin{document}
 % pagestyle nicht global festgelegt, da sonst bei allen Seiten Überschrift ist
 % daher muss hier fancy aktiviert werden (für eine Seite, daher thispagestyle)
@@ -23,7 +26,93 @@
 
 \section*{Aufgabe 1}
 % ...
+\[ f: (0,\infty) \rightarrow \mathbb{R}, f(x) = \frac{\ln x}{x} \]
+Zu Beginn schon die ersten drei Ableitungen:
+\[
+	f^\prime (x) = \frac{1 - \ln x}{x^2} \qquad
+	f^{\prime\prime} (x) =
+	\frac{-3+2 \ln x}{x^3} \qquad
+	f^{\prime\prime\prime} (x) =
+	\frac{11 - 6 \ln x}{x^4}
+	\]
+\par{a)}
+\begin{align*}
+	\limxzer f(x) &= \limxzer \frac{\ln x}{x} = -\infty \\
+	\lim_{x \rightarrow \infty} f(x) &= \lim_{x \rightarrow \infty} \frac{\ln x}{x} \\
+	\text{Regel von l'Hospital} \Rightarrow &= \lim_{x \rightarrow \infty} \frac{\frac{1}{x}}{1} = \lim_{x \rightarrow \infty} \frac{1}{x} = 0
+\end{align*}
+
+\par{b)}
+Damit wir mögliche Kandidaten für die Extremstellen von f erhalten benutze ich das notwendige Kriterium $f^\prime(x_0) = 0$:
+\[ 
+	f^\prime (x_0) = \frac{1-\ln x_0}{x_0^2} = 0 \Rightarrow 1-\ln x_0 =0
+	\Rightarrow x_0 = e
+\]
+Zur Überprüfung wird das Hinreichende Kriterium $f^\prime (x_0) = 0, \ f^{\prime\prime}(x_0) \neq 0$ angewendet:
+\[
+	f^{\prime\prime} (x_0) = f^{\prime\prime} (x_0) = \frac{-3e + 2e*\ln e}{e^4} = -e^{-3}
+	\]
+durch einsetzen von $x_0 = e$ in die Funktion f erhalten die Position des Maximums:
+\[
+	f(x_0) = f(e) = \frac{\ln e}{e} = \frac{1}{e} > 0 > -\infty
+	\]
+da sich $f$ bei den Randstellen 0 bzw. $-\infty$ annähert, liegt bei $(e,f(e))$ ein globales Maximum.
+
+\vspace{1cm}
+
+\par{c)} Da $f^\prime$ stetig auf $(0,\infty)$ ist, können wir mit der Nullstelle aus b) und einsetzen von Werten im jeweiligen Intervall herausfinden:
+\[
+	x \in (0,e) \Rightarrow f^\prime(x) > 0 \qquad
+	x = e \Rightarrow f^\prime(x) = 0 \qquad
+	x \in (e,\infty) \Rightarrow f^\prime(x) < 0
+\]
+Daraus lässt sich direkt auf die Monotonie schließen:
+\begin{align*}
+	x \in (0,e) &\Rightarrow f \text{ streng monoton steigend} \\
+	x \in (e,\infty) &\Rightarrow f \text{ streng monoton fallend}
+\end{align*}
+(Durch einschließen von e in den Intervallen wäre $f$ monoton fallend bzw. steigend.)
+
+\newpage
+
+\par{d)} Für die Wendepunkte wird das notwendige Kriterium angewendet:
+\begin{align*}
+	f^{\prime\prime} (x_0)= 0 \Rightarrow \frac{-3+2 \ln x_0}{x_0^3} &= 0\\
+	\Leftrightarrow \ln x_0 &= 1.5 \\
+	\Leftrightarrow x_0 &= e^{1.5}
+\end{align*}
+Die Überprüfung mit dem hinreichenden Kriterium $f^{\prime\prime} (x_0) = 0, f^{(3)} \neq 0$:
+\[ 
+	f^{(3)} (x_0) = \frac{11 - 6*\ln(e^{1.5})}{e^{4*1.5}} = \frac{2}{e^6} \neq 0 
+	\Longrightarrow (e^{1.5}, f(e^{1.5})) \text{ ist ein Wendepunkt}
+\]
+
+\newpage
+
 \section*{Aufgabe 2}
-% ...
+% berechnung der ersten 4 taylor polynome bei x_0 = 1
+\[ f: (0,\infty) \rightarrow \mathbb{R}, \quad f(x) = \ln(1 + \ln x) \]
+aus Ketten- und Produktregel folgen die Ableitungen:
+\begin{align*}
+	f^\prime (x) &=
+	\frac{1}{x (1+\ln x)} \\
+	f^{\prime\prime} (x) &=
+	\frac{-2 - \ln x}{x^2 * (1+\ln x)^2}\\
+	f^{(3)} (x) &=
+	\frac{2\ln^2\left(x\right)+7\ln\left(x\right)+7}{x^3\left(\ln\left(x\right)+1\right)^3} \\
+	f^{(4)} (x) &=
+	\frac{1}{1}
+\end{align*}
+Das $n$-te Taylorpolynom am Entwicklungspunkt $x_0$ ist definiert durch
+\[
+	T_n(x;x_0) = \sum_{k=0}^n \frac{f^{(n)}(x_0)}{k!} (x-x_0)^k
+	\]
+Daraus ergibt sich bei der $f$ am Entwicklungspunkt $x_0 = 1$:
+\begin{align*}
+	T_0(x;1) &=
+	f(1) = \ln (1 + \ln 1) = \ln 1 = 0 \\
+	T_1(x;1) &=
+	T_0(x;1) + f^\prime(1) * (x-1) = 0 + (x-1) * 1 = x - 1
+\end{align*}
 
 \end{document}
