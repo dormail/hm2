@@ -10,18 +10,178 @@
 \fancyhf{}
 % vspaces in den headern fuer Distanzen notwendig
 % linke Seite: Namen der Abgabegruppe
-\lhead{\textbf{Matthias Maile}\vspace{1.5cm}}
+\lhead{\textbf{Matthias Maile}\vspace{0.5cm}}
 % rechte Seite: Modul, Gruppe, Semester
-\rhead{\textbf{Höhere Mathematik 2\\Sommersemester 2020}\vspace{1.5cm}}
+\rhead{\textbf{Höhere Mathematik II\\Sommersemester 2020}\vspace{0.5cm}}
 % Center: nr. des blattes
-\chead{\vspace{2.5cm}\huge{\textbf{2. Übungsblatt}}}
+\chead{\vspace{1.5cm}\huge{\textbf{2. Übungsblatt}}}
 % benoetigt damit der eigentliche Text nicht in der Überschrift steckt
-\setlength{\headheight}{4cm} 
+\setlength{\headheight}{3cm} 
 
 \begin{document}
-\section*{Aufgabe 1}
-\newpage
-\setlength{\headheight}{4cm} 
-\section*{Aufgabe 2}
+\thispagestyle{fancy}
+\section*{Aufgabe 5}
+\par{a)}
+\[
+	\sum_{n=0}^\infty \frac{n^2}{1+n^3} (x-1)^n 
+\]
+Der 0. Koeffizient $a_0$ ist 0, daher kann der Index verschoben werden:
+\begin{align*}
+	\sum_{n=1}^\infty \frac{n^2}{1+n^3} (x-1)^n =
+	\sum_{n=1}^\infty \frac{1}{\frac{1}{n^2}+n} (x-1)^n <
+	\sum_{n=1}^\infty \frac{(x-1)^n}{n}
+\end{align*}
+Die Reihe $\sum_{n=1}^\infty\frac{1}{n}$ besitzt den Konvergenzradius 1, sodass wir jetzt nur noch die Randpunkte bestimmen müssen (diese sind um $x_0 = 1$ nach oben verschoben):
+\begin{itemize}
+	\item Für $x=0$:
+		$ \sum_{n=1}^\infty \frac{(-1)^n}{n} 
+		\Rightarrow$
+		alternierende Nullfolge, konv. nach Leibnizkriterium
+	\item Für $x=2$:
+		$ \sum_{n=1}^\infty \frac{1}{n}
+		\Rightarrow $
+		divergiert
+\end{itemize}
+Damit konvergiert die Potenzreihe für $ x \in [0, 2)$
 
+\vspace{0.5cm}
+\par{b)}
+\[
+	\sum_{n=0}^\infty \frac{n! 2^{2n}}{(2n)!} (x - 1)^n
+\]
+da alle Koeffizienten $\neq 0$ sind, kann die Formel 
+$r = \frac 1 {\lim_{n\rightarrow\infty} \frac{\vert a_{n+1} \vert}{\vert a_n \vert}} $ benutzt werden:
+\begin{align*}
+	r = \frac 1 c 
+	\text{ mit }c &= \lim_{n\rightarrow\infty} 
+	\frac{\vert a_{n+1} \vert}{\vert a_n\vert} \\
+	% einsetzen
+	&= \lim_{n\rightarrow\infty}
+	\frac{(n+1)! \ 2^{2n+2}}{(2n+2)!}
+	\frac{(2n)!}{n! \ 2^{2n}} \\
+	% kuerzen
+	&= \lim_{n\rightarrow\infty}
+	\frac{4 (n+1)}{(2n+2)(2n+1)} \\
+	% weiter kuerzen
+	&= \lim_{n\rightarrow\infty}
+	\frac{2}{2n+1}
+	=
+	2 \\
+	% in r einsetzen
+	\Rightarrow r &= \frac{1}{2}
+\end{align*}
+Die Konvergenz an den Randpunkten folgt aus dem Quotientenkriterium 
+(aufgrund der Betragsstriche ist dabei die Betrachtung von 
+$x = x_0 - 0.5$ mit der von $x = x_0 + 0.5$ identisch.
+\begin{align*}
+	\left|
+	\frac{a_{n+1}}{a_n}\right| 
+	&= \left|
+	\frac{(n+1)! \ 2^{2n+2} \ (\pm0.5)^{n+1}}{(2n+2)!} 
+	\frac{2n!}{n! * 2^{2n} * (\pm0.5)^{n+1}}
+	\right| 
+	\overset ! < 1
+	\\ 
+	&= \left|
+	\frac{(n+1) * 4 * (\pm0.5)}{(2n+2)(2n+1)}
+	\right| \\
+	&= \left|
+	\frac{\pm2}{2*(2n+1)} 
+	\right| = \frac 1 {2n + 1} < 1 \quad
+	\text{für } n \in \mathbb{N}
+\end{align*}
+Durch die Konvergenz and den Rändern des Intervalls besitzt die Reihe das Konvergenzintervall 
+\[ x \in \left[\frac12, \frac32 \right]. \]
+
+\newpage
+\setlength{\headheight}{0cm}
+\par{c)}
+\[
+	\sum_{n=0}^\infty n^22^n \left(x + \frac 1 4\right)^n
+	\]
+Die Berechnungsformel für den Konvergenzradius:
+\begin{align*}
+	r = \frac 1 c \text{ mit }
+	c &= \limsup_{n\rightarrow\infty} \sqrt[n]{\vert a_n \vert} \\
+	% einsetzen
+	&= \limsup_{n\rightarrow\infty} \sqrt[n]{n^2 2^n} \\
+	% 2^n rausziehen
+	&= \limsup_{n\rightarrow\infty} 2 \sqrt[n]{n^2} \\
+	% quadrat rausziehen
+	&= \limsup_{n\rightarrow\infty} 2
+	\left( \sqrt[n]{n} \right)^2 = 2 \\
+	\Rightarrow
+	r &= \frac 1 2, \quad x_0 = -\frac14
+\end{align*}
+Für die Randpunkte:
+\begin{itemize}
+	\item $x = -\frac12 + x_0 = -\frac34$: $\sum_{n=0}^\infty n^22^n 
+		\left( -\frac12 \right)^n = 
+		\sum_{n=0}^\infty n^2 (-1)^n
+		\Rightarrow
+		$
+		keine Nullfolge, somit divergiert die Reihe bei 
+		$x = -\frac34$
+	% obere schranke
+	\item $x = \frac12 + x_0 = \frac14$: $\sum_{n=0}^\infty n^22^n
+		\left( \frac14 + \frac14 \right)^n
+		=
+		\sum_{n=0}^\infty n^22^n \left( \frac12 \right)^n
+		=
+		\sum_{n=0}^\infty n^2
+		\Rightarrow
+		$
+		keine Nullfolge, die Reihe divergiert bei 
+		$x = \frac14$
+\end{itemize}
+Die Reihe Konvergiert also für $x \in \left(-\frac34, \frac14\right)$
+
+\vspace{0.5cm}
+\setlength{\headheight}{0cm} 
+\section*{Aufgabe 6}
+\[
+	f: \mathbb{R} \rightarrow \mathbb{R}, \quad
+	f(x) = (1 + x) e^x
+\]
+Für eine Funktion der Form $(a+x) e^x$ folgt die Ableitung aus der Produktregel:
+\[ 
+	\frac{d}{dx} \left( (a+x)e^x \right) 
+	= (a+x) * \frac{d}{dx} e^x + \left( \frac{d}{dx} (a+x) \right) e^x
+	= (a+x) e^x + 1 * e^x 
+	= (a+1+x) e^x
+\]
+Die $n$-te Ableitung von $f$ lautet demnach:
+\[
+	f^{(n)} (x) = (1+n+x) e^x
+\]
+Am Entwicklungspunkt $x_0 = -1$ lautet diese:
+\[
+	f^{(n)} (-1) = n * e^{-1} = \frac n e
+\]
+Aus den Ableitungen folgt die Taylorreihe:
+\[
+	T_\infty(x; -1) 
+	= \sum_{i=0}^\infty \frac{f^{(i)}(-1)}{i!} * (x+1)^i
+	= \sum_{i=0}^\infty \frac{i}{e * i!} * (x+1)^i
+\]
+Die Koeffizienten $a_n$ des Taylorpolynoms sind für $n > 0$ positiv, 
+da der Funktionswert am Entwicklungspunkt 0 ist, kann das 0. Taylorpolynom
+vernachlässigt werden.\\
+Der Konvergenzradius folgt dann:
+\begin{align*}
+	r = \frac 1 c \text{ mit } 
+	c &= \lim_{n\rightarrow\infty} \frac{\vert a_{n+1} \vert}{\vert a_n \vert} \\
+	&= \lim_{n\rightarrow\infty} 
+	\frac{n+1}{e * (n+1)!} * \frac{e * n!}{n} \\
+	% kuerzen
+	&= \lim_{n\rightarrow\infty}
+	\frac{(n+1) * n!}{(n+1)! \ n} \\
+	% weiter kuerzen
+	&= \lim_{n\rightarrow\infty}
+	\frac1 n = 0 \\
+	\Rightarrow
+	r &= \frac{1}{c} = \infty
+\end{align*}
+Da der Konvergenzradius gegen $\infty$ geht, stellt es die Funktion $f$ 
+auf ganz $\mathbb{R}$ dar.
 \end{document}
