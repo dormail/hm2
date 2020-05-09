@@ -1,0 +1,66 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+
+% packages die oefters gebraucht werden
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+
+\fancyhf{}
+% vspaces in den headern fuer Distanzen notwendig
+% linke Seite: Namen der Abgabegruppe
+\lhead{\textbf{Matthias Maile}\vspace{0.5cm}}
+% rechte Seite: Modul, Gruppe, Semester
+\rhead{\textbf{Höhere Mathematik II\\Sommersemester 2020}\vspace{0.5cm}}
+% Center: nr. des blattes
+\chead{\vspace{1.5cm}\huge{\textbf{2. Übungsblatt}}}
+% benoetigt damit der eigentliche Text nicht in der Überschrift steckt
+\setlength{\headheight}{3cm} 
+
+\begin{document}
+\thispagestyle{fancy}
+\section*{Aufgabe 9}
+\par{a) i)}
+\begin{align*}
+	\int_0^3 \left(e^{3x} - \sqrt[3]{e^x} \right) dx
+	&= \int_0^3 \left(e^{3x} - e^{\frac x3} \right) dx \\
+	% integral trennen
+	&= \int_0^3 e^{3x} dx - \int_0^3 e^{\frac x3} dx \\
+	% aus produktregel folgt
+	&= \left[ \frac13 e^{3x} + C \right]_0^3 -
+	\left[3 e^{\frac x 3} + D \right]_0^3 \\
+	% einsetzen
+	&= \left( \frac{e^9}{3} + C - \frac{e^0}{3} - C \right) -
+	\left(3e + D - 3e^0 - D \right) \\
+	% kuerzen
+	&= \frac{e^9}{3} - \frac13 - 3e + 3 \\
+	% alles in einen bruch
+	&= \frac{e^9 - 9e +8}{3}
+\end{align*}
+\par{ii)}
+\begin{align*}
+	\int_{\frac\pi6}^{\frac\pi3} \cot(x) \ln(\sin x) dx
+	&= \int_{\frac\pi6}^{\frac\pi3} 
+	\frac{\cos x}{\sin x} \ln(\sin x) dx \\
+	% substitution
+	u := \sin(x) \Rightarrow \frac{du}{dx} = \cos(x) 
+	\Rightarrow dx = \frac{du}{\cos(x)}
+	\Rightarrow \
+	&= \int_{\sin\frac\pi6}^{\sin\frac\pi3} 
+	\frac{\cos x}{\sin x} \ln(\sin x) \frac{du}{\cos x} \\
+	% kuerzen
+	&= \int_{\sin\frac\pi6}^{\sin\frac\pi3}
+	\frac1{u} \ln(u) du \\
+	% kettenregel
+	\int g(x) g^\prime(x) dx \overset{KR}{=} 
+	\frac12\left(g(x)\right)^2 + C
+	\Rightarrow \
+	&= \frac12 \left(\ln(u)\right)^2 + C 
+	\vert_{\frac12}^{\frac{\sqrt{3}}{2}}
+\end{align*}
+
+
+
+\section*{Aufgabe 10}
+\end{document}
