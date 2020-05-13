@@ -92,7 +92,7 @@
 	+ \frac14 x^2  + C\\
 	% vereinfachen
 	&= \frac12 x^2
-	\left(\ln^2x - \ln x + \frac14\right) + C
+	\left(\ln^2x - \ln x + \frac12\right) + C
 \end{align*}
 Da der $\ln x$ nur im Reellen nur für positive $x$ definiert ist, gilt die
 eben bestimmte Stammfunktion nur für $x \in (0,\infty)$.
@@ -146,27 +146,27 @@ Fkt. im Nenner)
 \par{3. Schritt:} Partialbruchzerlegung
 Wie nehmen dafür den Rest der Polynomdivision:
 \begin{align*}
-	\frac{-18x + 1}{(x+3)(x-2)} 
+	\frac{5x + 1}{(x+3)(x-2)} 
 	&= \frac{A}{x+3} + \frac{B}{x-2} \\
 	\Rightarrow
-	-18x + 1 
+	5x + 1 
 	&= A * (x-2) + B * (x+3)
 \end{align*}
 Das liefert uns das LGS:
 \begin{align*}
-	A + B &= -18  
-	\Rightarrow A = -18 - B
+	A + B &= 5
+	\Rightarrow A = 5-B
 	\\
 	-2A + 3B &= 1
-	\Rightarrow -2 * (-18 - B) + 3B = 36 + 5B = 1 
-	\Rightarrow B = -7, \ A = 25
+	\Rightarrow -2 * (5 - B) + 3B = -10 + 5B = 1 
+	\Rightarrow B = \frac{11}{5}, \ A = \frac{14}{5}
 \end{align*}
 Damit verbleibt das Integral:
 \[
-	\int \left( 2x - 3 + \frac{25}{x+3} - \frac{7}{x-2} \right) dx
+	\int \left( 2x - 3 + \frac{14}{5(x+3)} + \frac{11}{5(x-2)} \right) dx
 	=
-	x^2 - 3x + 25 \ln\vert x+3 \vert
-	- 7 \ln\vert x-2 \vert + C
+	x^2 - 3x + \frac{14}{5} \ln\vert x+3 \vert
+	+ \frac{11}{5} \ln\vert x-2 \vert + C
 \]
 
 \vspace{0.5cm}
