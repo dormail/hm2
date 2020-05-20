@@ -15,7 +15,7 @@
 % rechte Seite: Modul, Gruppe, Semester
 \rhead{\textbf{Höhere Mathematik II\\Sommersemester 2020}\vspace{0.5cm}}
 % Center: nr. des blattes
-\chead{\vspace{1.5cm}\huge{\textbf{3. Übungsblatt}}}
+\chead{\vspace{1.5cm}\huge{\textbf{4. Übungsblatt}}}
 % benoetigt damit der eigentliche Text nicht in der Überschrift steckt
 \setlength{\headheight}{3cm} 
 
@@ -115,8 +115,36 @@ Mit dem Integralkriterium lässt sich die Divergenz feststellen:
 	& \left[\ln z \right]_{\ln(\ln n_0)}^\infty = \infty - \ln(\ln n_0)
 	= \infty
 \end{align*}
+
 Da das unbestimmte Integral für alle $n_0$ divergiert muss auch die Reihe 
-divergieren.
+divergieren. \newline
+\vspace{0.5cm}
+\newline
+b) Gegeben war die Reihe 
+\[
+	\sum_2^\infty \frac1{n \ln(n) \ln^2(\ln n)}
+\]
 
-
+Mit dem Integralkriterium lässt sich zeigen:
+\begin{align*}
+	&\int_{n_0}^\infty \frac{1}{n \ln(n) \ln^2(\ln(n))} \ dn 
+	\hspace{1cm}
+	u := \ln(n) \Rightarrow dn = n \cdot du \\
+	% 1. subtistution einsetzen
+	\Rightarrow 
+	= &\int_{\ln n_0}^\infty \frac{n \cdot du}{n \cdot u \cdot 
+	\ln^2(u)} 
+	\hspace{1.5cm} z := \ln(u) \Rightarrow du = u \cdot dz \\
+	% zweite substitution einsetzen
+	\Rightarrow
+	= &\int_{\ln(\ln n_0)}^\infty \frac{u \ dz}{u \ln^2(z)} \\
+	% kuerzen
+	= &\int_{\ln(\ln n_0)}^\infty \frac{dz}{z^2} \\
+	% hauptsatz
+	\text{Hauptsatz } \Rightarrow =
+	& \left[\frac{-1}{z} \right]_{\ln(\ln n_0)}^\infty 
+	=
+	0 - \frac{-1}{\ln(\ln(n_0))} = \frac{1}{\ln(\ln(n_0))}
+\end{align*}
+Da das Integral für $n_0 \geq 1$  bestimmt ist, ist die Reihe divergent.
 \end{document}
