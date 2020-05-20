@@ -93,6 +93,30 @@ c)
 
 \section*{Aufgabe 14}
 
+a) Gegeben war die Reihe
+\[
+	\sum_2^\infty \frac{1}{n \ln(n) \ln(\ln(n))}
+\]
+Mit dem Integralkriterium lässt sich die Divergenz feststellen:
+\begin{align*}
+	&\int_{n_0}^\infty \frac{1}{n \ln(n) \ln(\ln(n))} \ dn \hspace{1cm}
+	u := \ln(n) \Rightarrow dn = n \cdot du \\
+	% 1. subtistution einsetzen
+	\Rightarrow 
+	= &\int_{\ln n_0}^\infty \frac{n \cdot du}{n \cdot u \cdot \ln(u)} 
+	\hspace{1.5cm} z := \ln(u) \Rightarrow du = u \cdot dz \\
+	% zweite substitution einsetzen
+	\Rightarrow
+	= &\int_{\ln(\ln n_0)}^\infty \frac{u \ dz}{u \ln(z)} \\
+	% kuerzen
+	= &\int_{\ln(\ln n_0)}^\infty \frac{dz}{z} \\
+	% hauptsatz
+	\text{Hauptsatz } \Rightarrow =
+	& \left[\ln z \right]_{\ln(\ln n_0)}^\infty = \infty - \ln(\ln n_0)
+	= \infty
+\end{align*}
+Da das unbestimmte Integral für alle $n_0$ divergiert muss auch die Reihe 
+divergieren.
 
 
 \end{document}
