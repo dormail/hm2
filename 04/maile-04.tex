@@ -19,6 +19,9 @@
 % benoetigt damit der eigentliche Text nicht in der Überschrift steckt
 \setlength{\headheight}{3cm} 
 
+% custom commands
+\newcommand{\arsinh}{\text{arsinh}}
+
 \begin{document}
 \thispagestyle{fancy}
 \section*{Aufgabe 13}
@@ -43,6 +46,7 @@ Faktorisierung der Funktion:
 	\frac{x}{(x+1)^3} &=
 	\frac{1}{(x+1)^2} - \frac{1}{(x+1)^3}
 \end{align*}
+
 Dann lässt sich das Integral evaluieren:
 \begin{align*}
 	\int_0^\infty \frac{x}{(x+1)^3} \ dx
@@ -65,12 +69,30 @@ Dann lässt sich das Integral evaluieren:
 	&= -0 + 1 + 0 - \frac12 \\
 	&= \frac12
 \end{align*}
+b)
+\begin{align*}
+	&\int_1^\infty \frac{x}{\sqrt{x^4 + 1}} \ dx 
+	\hspace{1cm} u:= x^2 \Rightarrow dx = \frac{du}{2x} \\
+	% erste substitution
+	= &\int_1^\infty \frac{1}{\sqrt{u^2 + 1}} \ du \\
+	% 0.5 rausziehen
+	= &\frac12 \int_1^\infty \frac{1}{\sqrt{u^2 + 1}} \ du \\
+	= &\frac12 \left[\arsinh(u) + c \right]_0^\infty \\
+	\Rightarrow & \arsinh(u) \text{ divergiert für } u \rightarrow
+	\infty
+\end{align*}
 
+Somit existiert das Integral nicht.\newline
+\vspace{0.2cm}
+\newline
+c)
 
 
 \newpage
 \setlength{\headheight}{0cm}
 
 \section*{Aufgabe 14}
+
+
 
 \end{document}
