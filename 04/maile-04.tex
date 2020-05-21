@@ -82,14 +82,43 @@ b)
 	\infty
 \end{align*}
 
-Somit existiert das Integral nicht.\newline
-\vspace{0.2cm}
-\newline
-c)
-
-
+Somit existiert das Integral nicht.
 \newpage
 \setlength{\headheight}{0cm}
+c)
+\begin{align*}
+	&\int_0^1 \frac{1}{e^x - 1} \ dx \quad
+	u := e^x \Rightarrow dx = \frac{du}{e^x} = \frac{du}{u} \\
+	% substitution einsetzen
+	=& \int_1^e \frac{du}{u \cdot (u-1)} 
+\end{align*}
+
+Dieser Bruch kann mit einer Partialbruchzerlegung ausgewertet werden:
+\begin{align*}
+	\frac{1}{u \cdot (u-1)} &= \frac{A}{u-1} + \frac{B}{u} \\
+	\Leftrightarrow
+	1 &= A \cdot u + B \cdot (u-1) \ \Rightarrow
+	A = 1, \ B = -1
+\end{align*}
+
+Einsetzen ins Integral:
+\begin{align*}
+	\int_1^e \frac{du}{u \cdot (u-1)} 
+	&= 
+	\int_1^e \frac{du}{u-1} - \int_1^e \frac{du}{u}  \\
+	% stammfkt bilden
+	&= \left[ \ln\vert u-1 \vert - \ln(u) \right]_1^e \\
+	% ln zusammen ziehen
+	&= \ln\left(\frac{u-1}{u}\right)_1^e \\
+	% einsetzen
+	&= \ln\left(\frac{e-1}{e}\right) -
+	\underbrace{\ln\left(\frac{1-1}{1}\right)}_{\ln0 \rightarrow -\infty}
+\end{align*}
+Da im letzten Schritt der $\ln 0$ bestimmt werden soll (oder durch eine 
+andere Darstellung eine 0-Division auftritt, ist das Integral nicht 
+definiert.
+
+
 
 \section*{Aufgabe 14}
 
@@ -120,6 +149,7 @@ Da das unbestimmte Integral für alle $n_0$ divergiert muss auch die Reihe
 divergieren. \newline
 \vspace{0.5cm}
 \newline
+\newpage
 b) Gegeben war die Reihe 
 \[
 	\sum_2^\infty \frac1{n \ln(n) \ln^2(\ln n)}
