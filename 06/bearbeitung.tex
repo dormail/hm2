@@ -1,0 +1,147 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+
+% packages die oefters gebraucht werden
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{aligned-overset}
+\usepackage{float}
+
+\fancyhf{}
+% vspaces in den headern fuer Distanzen notwendig
+% linke Seite: Namen der Abgabegruppe
+\lhead{\textbf{Matthias Maile}\vspace{0.5cm}}
+% rechte Seite: Modul, Gruppe, Semester
+\rhead{\textbf{Höhere Mathematik II\\Sommersemester 2020}\vspace{0.5cm}}
+% Center: nr. des blattes
+\chead{\vspace{1.5cm}\huge{\textbf{5. Übungsblatt}}}
+% benoetigt damit der eigentliche Text nicht in der Überschrift steckt
+\setlength{\headheight}{3cm} 
+
+% custom commands
+\newcommand{\arsinh}{\text{arsinh}}
+
+% for newpage to reset headheight
+\newcommand{\secondpage}{
+	\newpage 
+	\setlength{\headheight}{0cm}
+}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\section*{Aufgabe 21}
+Gegeben sei die Funktion 
+\[
+	f(x,y) = e^{x-y} \left(\frac{x^3}{3} - y\right)
+\]
+dann folgen die partiellen Ableitungen aus der Produkt- und Kettenregel und
+dem Satz von Schwartz:
+\begin{align*}
+	% erste ableitung nach x
+	\partial_x f(x,y) 
+	&= e^{x-y} \left(\frac{x^3}{3} - y + x^2 \right) \\
+	% erste ableitung nach y
+	\partial_y f(x,y) 
+	&= e^{x-y} \left( y - \frac{x^3}3 - 1\right) \\
+	% zweite nach x
+	\partial^2_x f(x,y) 
+	&= e^{x-y} \left(\frac{x^3}{3} - y + 2x^2 + 2x\right) \\
+	% zweite nach y
+	\partial^2_y f(x,y) 
+	&= e^{x-y} \left(2 -y + \frac{x^3}3 \right) \\
+	% ableitung nach x und y
+	\partial_x\partial_y f(x,y) &= 
+	\partial_y\partial_x f(x,y)
+	= e^{x-y} \left( y - \frac{x^3}3 - 1 - x^2\right) \\
+\end{align*}
+Das notwendige Kriterium für Extrema:
+\[ \text{grad} f(\vec a) = \vec 0 \]
+Der Gradient folgt aus den zuvor berechneten Ableitungen:
+\begin{align*}
+	\text{grad} f(x,y) 
+	&= \left( \partial_x f(x,y), \ \partial_y f(x,y) \right) \\
+	% ableitung einsetzen
+	&= \left( e^{x-y} \left(\frac{x^3}{3} - y + x^2 \right), \
+		e^{x-y} \left( y - \frac{x^3}3 - 1\right) \right) 
+	\overset != \vec 0 = (0,0)
+\end{align*}
+% unterbrechung um alignment neu zu setzen
+\begin{align*}
+	\Leftrightarrow
+	e^{x-y} \left(\frac{x^3}{3} - y + x^2 \right) &= 0 
+	&
+	& \land
+	&e^{x-y} \left( y - \frac{x^3}3 - 1\right) &= 0 \\
+	% e funktion rauskuerzen
+	\Leftrightarrow
+	\frac{x^3}{3} - y + x^2 &= 0 
+	& &&
+	y - \frac{x^3}3 - 1 &= 0 \\
+	% e funktion rauskuerzen
+	\Rightarrow
+	\frac{x^3}{3} + x^2 &= y \quad (21.1)
+	& &&
+	^\text{(21.1)}_\text{einsetzen} \Rightarrow
+	\frac{x^3}{3} + x^2 - \frac{x^3}3 - 1 &= 0 \\
+	% nach x umstellen
+	^\text{21.2}_\text{einsetzen} \Rightarrow
+	\frac{(\pm 1)^3}{3} + (\pm 1)^2 &= y
+	&&&
+	\Rightarrow x &= \pm 1 \quad (21.2) \\
+	% y ausrechnen
+	\Leftrightarrow 
+	1 \pm \frac13 = y
+\end{align*}
+Damit lauten die zwei möglichen Extremstellen
+\[
+	\vec a_1 = \left( 1, \ \frac 43 \right) \quad
+	\vec a_2 = \left( -1, \ \frac 23 \right)
+\]
+
+\secondpage
+
+Um zu bestimmen ob es sich um Maxima oder Minima (oder Sattelstellen)
+handelt betrachten wir die Definitheit der Hessematrix an den mögl. 
+Extremstellen.\\
+Die Hessematrix folgt aus den Ableitungen:
+\[
+	H_f(\vec a)
+	= \begin{pmatrix}
+		\partial_x\partial_x f(x,y) &
+		\partial_x\partial_y f(x,y) \\
+		\partial_y\partial_x f(x,y) &
+		\partial_y\partial_y f(x,y)
+	\end{pmatrix}
+	= \begin{pmatrix}
+	e^{x-y} \left(\frac{x^3}{3} - y + 2x^2 + 2x\right) &
+	e^{x-y} \left( y - \frac{x^3}3 - 1 - x^2\right) \\
+	e^{x-y} \left( y - \frac{x^3}3 - 1 - x^2\right) &
+	e^{x-y} \left(2 -y + \frac{x^3}3 \right)
+	\end{pmatrix}
+\]
+Für $\vec a_1$ finden wir dann ein 
+\begin{align*}
+	\det \left(H_f\left(1, \ \frac 43 \right) \right)
+	&= \det
+	\begin{pmatrix}
+	e^{-\frac13} \left(\frac{1}{3} - \frac43 + 2 + 2\right) &
+	e^{-\frac13} \left( \frac43 - \frac{1}3 - 2\right) \\
+	e^{-\frac13} \left( \frac43 - \frac{1}3 - 2 \right) &
+	e^{-\frac13} \left(2 - \frac43 + \frac{1}3 \right)
+	\end{pmatrix} \\
+	% e raus ziehen
+	&= \det
+	\begin{pmatrix}
+	3 \cdot e^{-\frac13}&
+	-e^{-\frac13} \\
+	-e^{-\frac13} &
+	e^{-\frac13}
+	\end{pmatrix} \\
+	&= 3 \cdot e^{-\frac{2}{3}} - e^{-\frac{2}{3}} \\
+	&= 2 \cdot e^{-\frac23} > 0
+\end{align*}
+
+\end{document}
