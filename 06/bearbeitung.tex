@@ -16,7 +16,7 @@
 % rechte Seite: Modul, Gruppe, Semester
 \rhead{\textbf{Höhere Mathematik II\\Sommersemester 2020}\vspace{0.5cm}}
 % Center: nr. des blattes
-\chead{\vspace{1.5cm}\huge{\textbf{5. Übungsblatt}}}
+\chead{\vspace{1.5cm}\huge{\textbf{6. Übungsblatt}}}
 % benoetigt damit der eigentliche Text nicht in der Überschrift steckt
 \setlength{\headheight}{3cm} 
 
@@ -122,7 +122,7 @@ Die Hessematrix folgt aus den Ableitungen:
 	e^{x-y} \left(2 -y + \frac{x^3}3 \right)
 	\end{pmatrix}
 \]
-Für $\vec a_1$ finden wir dann ein 
+Für $\vec a_1$ finden wir dann ein relatives Minimum (mit dem hinreichenden Kriterium):
 \begin{align*}
 	\det \left(H_f\left(1, \ \frac 43 \right) \right)
 	&= \det
@@ -141,7 +141,99 @@ Für $\vec a_1$ finden wir dann ein
 	e^{-\frac13}
 	\end{pmatrix} \\
 	&= 3 \cdot e^{-\frac{2}{3}} - e^{-\frac{2}{3}} \\
-	&= 2 \cdot e^{-\frac23} > 0
+	&= 2 \cdot e^{-\frac23} > 0 \\
+	% 2. abletung einer richtung
+	\partial_x\partial_x f\left(1, \ \frac 43 \right) 
+	&= e^{-\frac13} \left(\frac{1}{3} - \frac43 + 2 + 2\right) \\
+	&= 3 \cdot e^{-\frac13} > 0
 \end{align*}
+Mit dem hinreichenden Kriterium finden wir dann einen Sattelpunkt bei
+$\vec a_2$:
+\begin{align*}
+	\det \left(H_f\left(-1, \ \frac 23 \right) \right)
+	&= \det
+	\begin{pmatrix}
+	e^{-\frac53} \left(\frac{(-1)^3}{3} - \frac23 + 
+			2 \cdot (-1)^2 + 2 \cdot (-1) \right) &
+	e^{-\frac53} \left( \frac23 - \frac{(-1)^3}3 - 1 - (-1)^2\right) \\
+	e^{-\frac53} \left( \frac23 - \frac{(-1)^3}3 - 1 - (-1)^2\right) &
+	e^{-\frac53} \left(2 - \frac23 + \frac{(-1)^3}3 \right)
+	\end{pmatrix} \\
+	&= \det
+	\begin{pmatrix}
+	-e^{-\frac53} &
+	-e^{-\frac53} \\
+	-e^{-\frac53} &
+	e^{-\frac53} 
+	\end{pmatrix} \\
+	&= -e^{-\frac{10}{3}} - e^{-\frac{10}{3}} \\
+	&= -e^{-\frac{10}{3}} < 0
+\end{align*}
+
+\newpage
+	
+\section*{Aufgabe 22}
+b) Eine Einschränkung der $\varphi$-Komponente liefert uns eine 
+globale bijektive Abbildung, dazu wird nicht auf die $z$-Achse 
+abgebildet:
+\[
+	\vec \phi: (0,\infty) \times [0, 2\pi) \times \mathbb R 
+	\rightarrow \mathbb R^3 \setminus(z-\text{Achse})
+	, 
+	\hspace{1cm}
+	\vec \phi (r,\varphi, z) =
+	\begin{pmatrix}
+		r \cos(\varphi) \\
+		r \sin(\varphi) \\
+		z
+	\end{pmatrix}
+\]
+Da die $r$-Komponente in Zylinderkoordinaten den Abstand von der $z$-Achse
+beschreibt folgt aus dem Satz des Pytaghoras:
+\[
+	r = \sqrt{x^2 + y^2}
+\]
+Dann lässt sich für $\varphi$ und $z$ bestimmen:
+\[
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} r\cos(\varphi) \\ r\sin(\varphi) \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 
+		\sqrt{x^2 + y^2} \cos(\varphi) \\ 
+		\sqrt{x^2 + y^2} \sin(\varphi) \\ 
+		z 
+	\end{pmatrix}
+	\Rightarrow
+	\varphi 
+	= \arccos\left(\frac{x}{\sqrt{x^2+y^2}}\right)
+	=\arcsin\left(\frac{y}{\sqrt{x^2+y^2}}\right)
+\]
+Die zwei Ausdrücke für $\varphi$ bedeuten das natürlich 
+gleiche; $x$, $y$, und
+$\sqrt{x^2 + y^2}$ sind Anka-, Gegegenkathede und Hypothenuse und der 
+Quotient von diesen sind ja gerade sin und cos. \\
+\hspace{0.2cm}
+\\
+Durch scharfes hingucken erkennt man für $z$:
+\[
+	z = z
+\]
+Damit lautet die Umkehrabbildung, bei der mindestens $x$ oder $y$ ungleich
+0 sein müssen:
+\[
+	\vec \phi^{-1}(x,y,z)
+	=
+	\begin{pmatrix}
+		r \\ \varphi \\ z
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\sqrt{x^2 + y^2} \\
+		\arcsin\left(\frac{y}{\sqrt{x^2+y^2}}\right) \\
+		z
+	\end{pmatrix}
+\]
+
 
 \end{document}
