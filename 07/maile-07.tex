@@ -33,16 +33,79 @@
 \begin{document}
 \thispagestyle{fancy}
 \section*{Aufgabe 25}
+Der Abstand zum Punkt $\vec p$ ist gegeben durch
+\[ d(x,y,z) = \sqrt{x^2 + y^2 + (z-3)^2} \]
+Da dieser minimiert bzw. maximiert werden soll, kann, aufgrund der Monotonie der Wurzelfunktion, zur Berechnung
+von Extrema auch die Wurzel weggelassen werden:
+\[ d^\prime (x,y,z) = x^2 + y^2 + (z-3)^2 \]
+Die Nebenbedingung ist dabei, dass der Punkt auf dem Ellipsoid liegen soll:
+\[ E(x,y,z) = x^2 + 2y^2 + 4z^2 - 8 = 0 \]
+Dann folgt aus dem notwendigen Kriterium ein Extremum bei $\vec a$, sofern
+\[ \nabla d^\prime(\vec a) - \lambda \nabla E(\vec a) = \vec 0, \ E(\vec a) = 0 \quad 
+\text{und} \quad \nabla E (\vec a) \neq \vec 0 \]
+erfüllt sind.
+Die rechte Gleichung liefert uns als einzigen Ausnahmepunkt den Ursprung, welcher nicht auf der Ellipse liegt
+(und damit nicht weiter beachtet werden muss):
+\[ \nabla E (\vec a) = (2x, \ 4y, \ 8z) \overset!= (0,0,0) \Rightarrow \nabla E(\vec 0) = \vec 0 \]
+Damit lässt sich das Gleichungssystem aufstellen:
+\begin{align*}
+	\nabla d^\prime(\vec a) - \lambda \nabla E(\vec a) = \vec 0
+	\Rightarrow \hspace{2cm}
+	2x - \lambda 2x &= 0 \\
+	2y - \lambda 4y &= 0 \\
+	2x - 6 - \lambda 8z &= 0 \\
+	x^2 + 2y^2 + 4z^2 - 8 &= 0
+\end{align*}
+Die ersten 3 Zeilen liefern 3 Kandidaten für $\lambda$:
+\[
+	\lambda_1 = 1 \quad
+	\lambda_2 = \frac12 \quad
+	\lambda_3 = \frac{-3}{4z} + \frac14
+\]
+Damit lassen sich 3 Fälle aufstellen:\\
+1. Fall: $\lambda_3 = \lambda_1, \ y = 0, \ x$ variabel
+\begin{align*}
+	\lambda_1 = 1 \overset{!}&{=} \frac{-3}{4z} + \frac14 \\
+	\Rightarrow z &= -1
+\end{align*}
+2. Fall: $\lambda_3 = \lambda_2 \ x = 0, \ y$ variabel
+\begin{align*}
+	\lambda_2 = \frac12 \overset{!}&{=} \frac{-3}{4z} + \frac14 \\
+	\Rightarrow z &= -3
+\end{align*}
+Da dies gegen unsere Randbedingung verstößt (liegt nicht auf dem Parabolloid), ist dies keine Lösung. \\
+3. Fall: $x = y = 0, \ z$ variabel
+\begin{align*}
+	E(0,0,z) = 4z^2 - 8 &= 0 \\
+	\Leftrightarrow 
+	z^2 &= 2 \quad \Rightarrow z = \pm \sqrt 2
+\end{align*}
+
+\secondpage
+
+Für den 1. Fall lässt sich $x$ bestimmen:
+\[ E(x,0,-1) = x^2 + 4 - 8 = 0 \Rightarrow x = \pm 2 \]
+
+Damit existieren Mehrere mögliche Extrema:
+\[
+	\vec a_{1/2} = \begin{pmatrix} \pm 2 \\ 0 \\ -1 \end{pmatrix} \quad
+	\vec a_{3/4} = \begin{pmatrix} 0 \\ 0 \\ \pm \sqrt 2 \end{pmatrix}
+\]
+Setzen man diese in unsere Distanzformel $d(x,y,z)$ ein, erhalten wir die Werte:
+\begin{align*}
+	d_1 &= d(\vec a_1) = \sqrt{20} \\
+	d_2 &= d(\vec a_2) = \sqrt{20} \\
+	d_3 &= d(\vec a_3) \approx 1.59 \\
+	d_4 &= d(\vec a_4) = \sqrt{8}
+\end{align*}
+Somit liegt die Minimale Distanz $d_\text{min} \approx 1.59$ am 
+Punkt $(0,0,\sqrt 2)$, und die maximale Distanz $d_\text{max} = \sqrt{20}$ an den
+Punken $(\pm2, 0, -1)$ vor.
 
 
 \section*{Aufgabe 26}
-a) Gemäß der Grafik Teile ich das Gebiet $D$ in $A$ und $B$ auf, und 
-integriere diese einzeln.
-\begin{wrapfigure}{r}{0.3\textwidth}
-	\centering
-	\includegraphics[width=5cm]{26-plt.png}
-\end{wrapfigure}
-
+a) Damit das Integral berechnet werden kann, teile ich es in einen Bereich A $0 \leq x < 1$ und einen Zweiten
+B $1 \leq x \leq 2$ auf.
 \begin{align*}
 	\int_D \frac{y^2}{x^2} d(x,y) 
 	% aufteilen der flaeche
@@ -70,5 +133,33 @@ integriere diese einzeln.
 	&= \frac{47}{16} \frac{1}{12}
 \end{align*}
 
+b) Nach dem Satz von Fubini dürfen die Integrale vertauscht werden.
+\begin{align*}
+	\int_G (x+y+z)d(x,y,z)
+	&= \int_0^{xy} \int_x^1 \int_0^1 (x+y+z) \ dx dy dz  \\
+	% integrale vertauschen
+	&= \int_0^1 \int_x^1  \int_0^{xy} (x+y+z) \ dz dy dx  \\
+	% nach z integrieren
+	\text{(HS)} \Rightarrow
+	&= \int_0^1 \int_x^1 \left[zx + zy + \frac12 z^2 \right]_0^{xy} dy dx  \\
+	% werte fuer z einsetzen
+	&= \int_0^1 \int_x^1 \left[x^2y + xy^2 + \frac12 x^2y^2 \right] dy dx  \\
+	% nach y integrieren
+	\text{(HS)} \Rightarrow
+	&= \int_0^1 \left[\frac12 x^2y^2 + \frac13 xy^3 + \frac16 x^2y^3 \right]_x^1  dx  \\
+	% werte fuer y einsetzen
+	&= \int_0^1 \left[\frac12 x^2 + \frac13 x + \frac16 x^2 
+	- \frac12 x^4 + \frac13 x^4 + \frac16 x^5 \right]  dx  \\
+	% vereinfachen
+	&= \int_0^1 \left[\frac16 x^5 - \frac16 x^4   + \frac23 x^2 + \frac13 x \right]  dx  \\
+	% nach x integrieren
+	\text{(HS)} \Rightarrow
+	&= \left[\frac1{36} x^6 - \frac1{30} x^5   + \frac2{9} x^3 + \frac16 x^2 \right]_0^1 \\
+	% einsetzen
+	&= \frac1{36} - \frac1{30} + \frac2{9} + \frac16 \\
+	% vereinfachen
+	&= \frac9{36} + \frac4{30} \\
+	&= \frac14 + \frac2{15}
+\end{align*}
 
 \end{document}
